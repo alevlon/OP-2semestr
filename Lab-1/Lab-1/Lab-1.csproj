@@ -134,5 +134,9 @@
   <ItemGroup>
     <Resource Include="laptop_computer_books_study_pc_icon_209299.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="data.txt" />
+    <Resource Include="NewData.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

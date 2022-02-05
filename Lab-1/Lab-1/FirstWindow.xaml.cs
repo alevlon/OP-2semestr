@@ -32,13 +32,16 @@ namespace Lab_1
             mw.Show();
         }
 
+
         private void SaveData_Click(object sender, RoutedEventArgs e)
         {
             string PIB_text = PIB.Text;
             string Number_text = Number.Text;
             string StudentInfo_text = StudentInfo.Text;
 
-            string writePath = @"D:\KPI\Programming\2 семестр\Lab-1\data.txt";
+
+
+            string writePath = @"..\..\data.txt";
             string text = PIB_text + " " + Number_text + " " + StudentInfo_text;
 
             if (PIB_text.Length > 0 &&
@@ -64,8 +67,8 @@ namespace Lab_1
 
         private void Delete_Data_Click(object sender, RoutedEventArgs e)
         {
-            string path = @"D:\KPI\Programming\2 семестр\Lab-1\data.txt";
-            string writePath = @"D:\KPI\Programming\2 семестр\Lab-1\NewData.txt";
+            string path = @"..\..\data.txt";
+            string writePath = @"..\..\NewData.txt";
             try
             {
                 StreamReader sr = new StreamReader(path, System.Text.Encoding.Default);
@@ -75,12 +78,13 @@ namespace Lab_1
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (line.Length == 0) break;
+                    if (!line.Contains(Number_Delete.Text.ToString())) sw.WriteLine(line);
 
-                    string[] str = line.Split(' ');
-                    if (str[3] != Number_Delete.Text) 
-                    {
-                        sw.WriteLine(line);
-                    }
+                    //string[] str = line.Split(' ');
+                    //if (str[3] != Number_Delete.Text) 
+                    //{
+                    //    sw.WriteLine(line);
+                    //}
                 }
                 
                 sr.Close();

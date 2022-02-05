@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("laptop_computer_books_study_pc_icon_209299.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("newdata.txt")]
 
 
