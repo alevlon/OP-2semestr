@@ -1,0 +1,101 @@
+﻿<Window x:Class="Lab_1.ThirdWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_1"
+        mc:Ignorable="d"
+        Title="ThirdWindow" Height="377.889" Width="351.111" Background="#FFE8E8E8">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFE69042"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FFDA8309"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFDA8309"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FFD16B00"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top" UseLayoutRounding="False" Height="393">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="61*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Button Content="1" Margin="10,225,5.2,114.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80"/>
+        <Button Content="2" Margin="90,225,230,114.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.ColumnSpan="2" />
+        <Button Content="3" Margin="74.8,225,150,114.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="4" Margin="10,170,5.2,169.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80"/>
+        <Button Content="5" Margin="90,170,230,169.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.ColumnSpan="2"/>
+        <Button Content="6" Margin="74.8,170,150,169.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="7" Margin="10,115,5.2,224.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Click="button_click" Height="55" Width="80">
+            <Button.Background>
+                <SolidColorBrush Color="White"/>
+            </Button.Background>
+        </Button>
+        <Button Content="8" Margin="90,115,230,224.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.ColumnSpan="2"/>
+        <Button Content="9" Margin="74.8,115,150,224.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="0" Margin="90,280,230,59.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.ColumnSpan="2" MinWidth="80" MinHeight="55"/>
+        <Button x:Name="GoToMainWin" Content="Головна" Margin="10,280,5.2,59.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="16" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Background="#FFFF6C61" Click="GoToMainWin_Click" Height="55" Width="80"/>
+        <Button Content="=" Margin="74.8,280,70,59.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="#FFEABE38" Click="button_click" Width="160" Grid.Column="1"/>
+        <Button Content="+" Margin="154.8,225,70,114.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="-" Margin="154.8,170,70,169.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="*" Margin="154.8,115,70,224.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="/" Margin="154.8,60,70,279.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="⌫" Margin="74.8,60,150,279.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.Column="1"/>
+        <Button Content="C" Margin="90,60,230,279.4" BorderThickness="2" BorderBrush="#FFE8E8E8" RenderTransformOrigin="0.5,0.503" FontFamily="Calibri" FontSize="18" Opacity="0.7" FlowDirection="RightToLeft" Grid.IsSharedSizeScope="True" Foreground="Black" Style="{DynamicResource ButtonStyle1}" Background="White" Click="button_click" Height="55" Width="80" Grid.ColumnSpan="2"/>
+        <Label x:Name="MainText" Content="" FontFamily="Calibri" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Height="37" Width="320" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="10,23,0,0" Grid.ColumnSpan="2"/>
+        <Label x:Name="SecondText" Content="" FontFamily="Calibri" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="320" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="15,0,0,0" Foreground="#FF666666" Grid.ColumnSpan="2"/>
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="Lab_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab_1"
+        mc:Ignorable="d"
+        Title="Lab-1" Height="450" Width="800" Background="White">
+    <Grid Background="#FFC7E5D7">
+        <Button Content="Закрити" Margin="641,344,0,0" RenderTransformOrigin="0.385,0.284" AutomationProperties.Name="btn_Exit" Background="#FFFF6F6F" Foreground="Black" BorderBrush="Black" Click="btn_Exit_click" FontFamily="Segoe Print" FontSize="16" Height="49" VerticalAlignment="Top" HorizontalAlignment="Left" Width="117"/>
+        <Button x:Name="ToWin1" Content="Вікно № 1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="60,63,0,0" Background="#FFFFE9A4" Height="49" FontFamily="Segoe Print" FontSize="16" MouseEnter="FirstWindowButtonEnter" MouseLeave="FirstWindowButtonLeave" Click="ToWin1_Click"/>
+        <Button x:Name="ToWin2" Content="Вікно № 2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="60,136,0,0" Background="#FFFFE9A4" Height="49" FontFamily="Segoe Print" FontSize="16" MouseEnter="SecondWindowButtonEnter" MouseLeave="SecondWindowButtonLeave" Click="ToWin2_Click"/>
+        <Button x:Name="ToWin3" Content="Вікно № 3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="60,208,0,0" Background="#FFFFE9A4" Height="49" FontFamily="Segoe Print" FontSize="16" MouseEnter="ThirdWindowButtonEnter" MouseLeave="ThirdWindowButtonLeave" Click="ToWin3_Click"/>
+        <Button x:Name="ToWin4" Content="Вікно № 4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="60,280,0,0" Background="#FFFFE9A4" Height="49" FontFamily="Segoe Print" FontSize="16" MouseEnter="FourthWindowButtonEnter" MouseLeave="FourthWindowButtonLeave" Click="ToWin4_Click"/>
+        <Label x:Name="FirstWindowText" Content="Додати дані студентів" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="353,69,0,0" Width="219" FontFamily="Segoe Print" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="SecondWindowText" Content="Гра хрестики-нулики" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="353,142,0,0" Width="219" FontFamily="Segoe Print" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="ThirdWindowText" Content="Простий калькулятор" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="353,214,0,0" Width="219" FontFamily="Segoe Print" FontSize="16" Visibility="Hidden"/>
+        <Label x:Name="FourthWindowText" Content="Дані про розробника" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="353,286,0,0" Width="219" FontFamily="Segoe Print" FontSize="16" Visibility="Hidden"/>
+    </Grid>
+</Window>
