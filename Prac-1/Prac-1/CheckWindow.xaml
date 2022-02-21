@@ -5,23 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prac_1"
         mc:Ignorable="d"
-        Title="CheckWindow" Height="429.155" Width="907.902" Background="#FF007DCC">
+        Title="CheckWindow" Height="429.155" Width="1061.507" Background="#FF007DCC">
     <Grid>
         <Label Content="Кодове слово: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,95,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
         <Label Content="длагнитор" VerticalAlignment="Top" Margin="204,95,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="127" RenderTransformOrigin="0.48,0.976"/>
-        <Label Content="РЕЖИМ ПЕРЕВІРКИ" VerticalAlignment="Top" Margin="307,19,308,0" FontFamily="Yu Gothic UI" FontSize="28" Foreground="White" RenderTransformOrigin="0.506,0.595" FontWeight="Bold"/>
-        <Button x:Name="btn_exit" Content="Вийти з режиму" VerticalAlignment="Top" Height="47" Margin="307,331,308,0" FontFamily="Yu Gothic UI" FontSize="20" Background="#FF993955" Foreground="#FFFF5989" BorderBrush="{x:Null}" RenderTransformOrigin="0.585,0.55" Click="btn_exit_Click"/>
+        <Label Content="РЕЖИМ ПЕРЕВІРКИ" VerticalAlignment="Top" Margin="401,21,312,0" FontFamily="Yu Gothic UI" FontSize="28" Foreground="White" RenderTransformOrigin="0.506,0.595" FontWeight="Bold"/>
+        <Button x:Name="btn_exit" Content="Вийти з режиму" VerticalAlignment="Top" Height="47" Margin="329,327,333,0" FontFamily="Yu Gothic UI" FontSize="20" Background="#FF993955" Foreground="#FFFF5989" BorderBrush="{x:Null}" RenderTransformOrigin="0.585,0.55" Click="btn_exit_Click"/>
         <Label Content="К-сть спроб: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,137,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
         <Label Content="Alplha: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="252,137,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
         <Label Content="Кількість введених символів: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,184,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
-        <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="363,184,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White" Background="#00000000" FontWeight="Bold" RenderTransformOrigin="0.304,0.619"/>
-        <TextBox HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Margin="42,231,0,0" BorderBrush="{x:Null}" Text="" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White" Background="#FF00619C" SelectionBrush="#FF38C0FF" FontWeight="Bold"/>
-        <Label Content="Статичний аналіз " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="578,95,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White" FontWeight="Bold"/>
-        <Label Content="Дисперсії вибірок: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="503,137,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
-        <Label Content="P ідентифікація: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="503,179,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
-        <Label Content="Помилка 1-го роду: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="503,221,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
-        <Label Content="Помилка 2-го роду: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="503,263,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
-        <ComboBox x:Name="CountAttempts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Margin="188,142,0,0" Height="37" Background="#FF00A682" FontFamily="Yu Gothic UI" FontSize="22" Opacity="0.8">
+        <Label x:Name="CountSymbols" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="363,184,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" RenderTransformOrigin="0.304,0.619"/>
+        <TextBox x:Name="InputField" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Margin="42,231,0,0" BorderBrush="{x:Null}" Text="" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White" Background="#FF00619C" SelectionBrush="#FF38C0FF" FontWeight="Bold" TextChanged="InputField_TextChanged" IsEnabled="False"/>
+        <Label Content="Статичний аналіз " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="627,90,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White" FontWeight="Bold"/>
+        <Label Content="Дисперсії вибірок: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="552,132,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
+        <Label Content="P ідентифікація: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="552,174,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
+        <Label Content="Помилка 1-го роду: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="552,216,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
+        <Label Content="Помилка 2-го роду: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="552,258,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="White"/>
+        <ComboBox x:Name="CountAttempts" HorizontalAlignment="Left" VerticalAlignment="Top" Width="46" Margin="188,142,0,0" Height="37" Background="#FF007DCC" FontFamily="Yu Gothic UI" FontSize="22" Opacity="0.5" SelectionChanged="CountAttempts_SelectionChanged">
             <ListBoxItem Content="3" FontSize="15" FontFamily="Yu Gothic UI"/>
             <ListBoxItem Content="4" FontSize="15" FontFamily="Yu Gothic UI"/>
             <ListBoxItem Content="5" FontSize="15" FontFamily="Yu Gothic UI"/>
@@ -29,5 +29,10 @@
             <ListBoxItem Content="7" FontSize="15" FontFamily="Yu Gothic UI"/>
         </ComboBox>
         <Label Content="0,05" VerticalAlignment="Top" Margin="341,137,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="127" RenderTransformOrigin="0.48,0.976"/>
+        <Label x:Name="Variance_Of_Samples" Content="невідомо" VerticalAlignment="Top" Margin="772,132,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="218" RenderTransformOrigin="0.48,0.976"/>
+        <Label x:Name="P_Identification" Content="невідомо" VerticalAlignment="Top" Margin="742,174,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="169" RenderTransformOrigin="0.48,0.976"/>
+        <Label x:Name="Mistake_1" Content="невідомо" VerticalAlignment="Top" Margin="784,216,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="127" RenderTransformOrigin="0.48,0.976"/>
+        <Label x:Name="Mistake_2" Content="невідомо" VerticalAlignment="Top" Margin="784,258,0,0" FontFamily="Yu Gothic UI" FontSize="24" Foreground="#FFFF5989" Background="#00000000" FontWeight="Bold" HorizontalAlignment="Left" Width="127" RenderTransformOrigin="0.48,0.976"/>
+        <RadioButton x:Name="Check_author" Content="Ви є автором?" HorizontalAlignment="Left" FontFamily="Yu Gothic UI" Foreground="White" VerticalAlignment="Top" Margin="42,359,0,0"/>
     </Grid>
 </Window>

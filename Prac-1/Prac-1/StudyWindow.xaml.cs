@@ -25,6 +25,19 @@ namespace Prac_1
             InitializeComponent();
         }
 
+        static string writePath = @"..\..\data.txt";
+        static string phrase = "длагнитор";
+
+        public int MainCount;
+        public int Count = 0;
+
+        public List<List<double>> arr = new List<List<double>>();
+        public List<double> row = new List<double>();
+
+        public DateTime Start;
+        public DateTime End;
+        public bool firstClick = true;
+
         private void btn_exit_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
@@ -32,9 +45,6 @@ namespace Prac_1
             mw.Show();
         }
 
-        public string writePath = @"..\..\data.txt";
-        public int MainCount;
-        public string phrase = "длагнитор";
         private void CountAttempts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CountAttempts.IsEnabled = false;
@@ -46,7 +56,7 @@ namespace Prac_1
                 ComboBox comboBox = (ComboBox)sender;
                 ListBoxItem selectedItem = (ListBoxItem)comboBox.SelectedItem;
                 MainCount = Convert.ToInt32(selectedItem.Content.ToString());
-                sw.WriteLine("Кількість спроб - " + MainCount.ToString());
+                sw.WriteLine("Кількість спроб: " + MainCount.ToString());
 
                 sw.Close();
             }
@@ -56,17 +66,8 @@ namespace Prac_1
             }
         }
 
-
-        int Count = 0;
-        List<List<double>> arr = new List<List<double>>();
-        List<double> row = new List<double>();
-
-        DateTime Start;
-        DateTime End;
-        bool firstClick = true;
-        private void InputField_KeyUp(object sender, KeyEventArgs e)
+        private void InputField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
             string a = "";
             bool check = true;
             try
@@ -74,33 +75,36 @@ namespace Prac_1
                 a = InputField.Text;
                 if (a[a.Length - 1] != phrase[a.Length - 1])
                 {
+                    MessageBox.Show("You make a mistake");
+                    //MainWindow mw = new MainWindow();
+                    //Hide();
+                    //mw.Show();
+                    row = new List<double>();
+                    firstClick = true;
                     check = false;
-                    a = a.Remove(a.Length - 1, 1);
-                    InputField.Text = a;
-                    InputField.Select(InputField.Text.Length, 0);
+                    InputField.Text = "";
                 }
             }
-            catch (Exception Exc) 
+            catch (Exception Exc)
             {
                 check = false;
             }
 
 
-            if (check) 
+            if (check)
             {
-                if (firstClick) 
+                if (firstClick)
                 {
                     Start = DateTime.Now;
                     firstClick = false;
                 }
-                else 
+                else
                 {
                     End = DateTime.Now;
                     long elapsedTicks = End.Ticks - Start.Ticks;
                     TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
                     double x = elapsedSpan.TotalSeconds;
                     row.Add(x);
-
                     Start = End;
                 }
 
@@ -113,18 +117,19 @@ namespace Prac_1
                     row = new List<double>();
                     firstClick = true;
 
-                    if (Count >= MainCount) 
+                    if (Count >= MainCount)
                     {
                         InputField.IsEnabled = false;
 
-                        for (int i = 0; i < MainCount; i++) 
+                        for (int i = 0; i < MainCount; i++)
                         {
-                            for (int j = 0; j < arr[i].Count; j++) 
+                            for (int j = 0; j < arr[i].Count; j++)
                             {
                                 List<double> try_i = new List<double>();
                                 try_i = arr[i];
 
-                                try_i.RemoveAt(j);
+                                double old_element = try_i[0];
+                                try_i.RemoveAt(0);
 
                                 double M = 0;
                                 for (int k = 0; k < try_i.Count; k++) M += try_i[k];
@@ -136,28 +141,37 @@ namespace Prac_1
 
                                 double S_i = Math.Sqrt(S);
 
-                                double t_p = Math.Abs((arr[i][j] - M) / (S_i / Math.Sqrt(try_i.Count)));
+                                double t_p = Math.Abs((arr[i][0] - M) / (S_i / Math.Sqrt(try_i.Count)));
 
                                 double[] ratioStudent = { 12.706, 4.3027, 3.1825, 2.7764, 2.5706, 2.4469, 2.3646, 2.3060, 2.2622, 2.2281, 2.2010, 2.1788, 2.1604, 2.1448, 2.1315, 2.1199, 2.1098 };
-                                if (t_p > ratioStudent[try_i.Count]) 
+                                if (t_p <= ratioStudent[try_i.Count])
                                 {
-                                    int abc = 123;
-                                }
+                                    try_i.Add(old_element);
+                                }            
                             }
                         }
 
+                        StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default);
+                        for (int i = 0; i < MainCount; i++)
+                        {
+                            double M = 0;
+                            for (int k = 0; k < arr[i].Count; k++) M += arr[i][k];
+                            M = M / arr[i].Count;
 
+                            double S = 0;
+                            for (int k = 0; k < arr[i].Count; k++) S += Math.Pow((arr[i][k] - M), 2);
+                            S = S / arr[i].Count;
 
-                        //StreamWriter sw = new StreamWriter(writePath, true, System.Text.Encoding.Default);
-                        //for (int i = 0; i < arr.Count; i++)
-                        //{
-                        //    for (int j = 0; j < arr[i].Count; j++)
-                        //    {
-                        //        sw.Write(arr[i][j].ToString() + " ");
-                        //    }
-                        //    sw.WriteLine();
-                        //}
-                        //sw.Close();
+                            double S_i = Math.Sqrt(S);
+
+                            for (int j = 0; j < arr[i].Count; j++)
+                            {
+                                sw.Write(arr[i][j].ToString() + "|");
+                            }
+                            sw.Write($"Дисперсія: {S_i} Математичне сподівання: {M}");
+                            sw.WriteLine();
+                        }
+                        sw.Close();
                     }
                 }
 
