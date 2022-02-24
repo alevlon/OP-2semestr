@@ -7,18 +7,15 @@
         mc:Ignorable="d"
         Title="FirstWindow" Height="450" Width="800">
     <Grid Background="#FFAAFFD9">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="64*"/>
-            <RowDefinition Height="41*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="GoToMainWin" Content="Головна" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="665,92.6,0,0" Height="48" Background="#FFFF6C61" FontFamily="Segoe Print" FontSize="16" Click="GoToMainWin_Click" Grid.Row="1"/>
+
+        <Button x:Name="GoToMainWin" Content="Головна" HorizontalAlignment="Left" VerticalAlignment="Top" Width="107" Margin="665,351,0,0" Height="48" Background="#FFFF6C61" FontFamily="Segoe Print" FontSize="16" Click="GoToMainWin_Click"/>
         <TextBox x:Name="PIB" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Margin="32,96,0,0" FontFamily="Segoe Script" FontSize="18" Opacity="0.8"/>
         <TextBox x:Name="Number" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Margin="32,169,0,0" FontFamily="Segoe Script" FontSize="18" Opacity="0.8"/>
-        <TextBox x:Name="StudentInfo" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Margin="32,246,0,0" FontFamily="Segoe Script" FontSize="18" Opacity="0.8" Grid.RowSpan="2"/>
+        <TextBox x:Name="StudentInfo" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Margin="32,246,0,0" FontFamily="Segoe Script" FontSize="18" Opacity="0.8"/>
         <Label Content="ПІБ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,56,0,0" FontFamily="Segoe Print" FontSize="20" Height="35"/>
         <Label Content="Номер залікової" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,128,0,0" FontFamily="Segoe Print" FontSize="20" Height="42" Width="275"/>
         <Label Content="Особисті дані" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45,204,0,0" FontFamily="Segoe Print" FontSize="20" Height="42" Width="275"/>
-        <Button x:Name="SaveData" Content="Зчитати" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Margin="109,49,0,0" Height="48" Background="#FF70FF61" FontFamily="Segoe Print" FontSize="16" Grid.Row="1" Click="SaveData_Click"/>
+        <Button x:Name="SaveData" Content="Зчитати" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Margin="110,317,0,0" Height="48" Background="#FF70FF61" FontFamily="Segoe Print" FontSize="16" Click="SaveData_Click"/>
         <Label Content="Видалити за номером залікової" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="423,54,0,0" FontFamily="Segoe Print" FontSize="20" Height="42" Width="349"/>
         <TextBox x:Name="Number_Delete" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Margin="435,96,0,0" FontFamily="Segoe Script" FontSize="18" Opacity="0.8"/>
         <Button x:Name="Delete_Data" Content="Видалити" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Margin="524,153,0,0" Height="48" Background="#FFFFB661" FontFamily="Segoe Print" FontSize="16" Click="Delete_Data_Click"/>
