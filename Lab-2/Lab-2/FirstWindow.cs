@@ -17,12 +17,12 @@ namespace Lab_2
             initControls();
         }
 
-        Window wn = new Window();
+        public Window wn = new Window();
 
-        TextBox PIB = new TextBox();
-        TextBox Number = new TextBox();
-        TextBox StudentInfo = new TextBox();
-        TextBox Number_Delete = new TextBox();
+        public TextBox PIB = new TextBox();
+        public TextBox Number = new TextBox();
+        public TextBox StudentInfo = new TextBox();
+        public TextBox Number_Delete = new TextBox();
         private void initControls() 
         {
             

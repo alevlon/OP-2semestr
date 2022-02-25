@@ -72,28 +72,22 @@ namespace Lab_2
             Close();
         }
 
+        //Second Window
         private void ToWin4_Click(object sender, RoutedEventArgs e)
         {
-            //FourthWindow mw;
-            //mw = new FourthWindow();
-            //Hide();
-            //mw.Show();
+
         }
 
         private void ToWin3_Click(object sender, RoutedEventArgs e)
         {
-            //ThirdWindow mw;
-            //mw = new ThirdWindow();
-            //Hide();
-            //mw.Show();
+            ThirdWindow secondWindow = new ThirdWindow();
+            Close();
         }
 
         private void ToWin2_Click(object sender, RoutedEventArgs e)
         {
-            //SecondWindow mw;
-            //mw = new SecondWindow();
-            //Hide();
-            //mw.Show();
+            SecondWindow secondWindow = new SecondWindow();
+            Close();
         }
     }
 }
