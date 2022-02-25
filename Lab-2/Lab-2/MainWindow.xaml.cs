@@ -75,7 +75,8 @@ namespace Lab_2
         //Second Window
         private void ToWin4_Click(object sender, RoutedEventArgs e)
         {
-
+            FourthWindow secondWindow = new FourthWindow();
+            Close();
         }
 
         private void ToWin3_Click(object sender, RoutedEventArgs e)
