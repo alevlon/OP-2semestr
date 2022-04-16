@@ -1,0 +1,143 @@
+﻿<Window x:Class="Prac_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prac_3"
+        mc:Ignorable="d"
+        Title="MainWindow" Width="1000" Background="Transparent" AllowsTransparency="True" Height="550" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Padding="0" SizeToContent="WidthAndHeight">
+
+    <Grid x:Name="VisibleWindow" Height="550" Width="1000">
+
+        <Grid x:Name="Login" Margin="0,0,0,0" >
+            <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
+            <Label Content="УВІЙТИ ДО СВОГО АКАУНТУ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="198,85,198,410" Foreground="White" FontFamily="Arial Black" FontSize="36"></Label>
+            <Image Source="/Screenshot_1.png" Margin="444,20,444,470" ></Image>
+
+            <TextBox x:Name="Login_FieldForLogin" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="339,172,359,336" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
+            <Label Content="Логін" Margin="345,169,591,358" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <PasswordBox x:Name="Login_FieldForPassword" Style="{DynamicResource PasswordBoxStyle1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="339,252,359,256" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42"/>
+            <Label Content="Пароль" Margin="345,250,591,277" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <Button Style="{DynamicResource ButtonStyle1}" Content="Login" x:Name="Login_Btn" Margin="500,330,334,180" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Click="Login_Btn_Click"></Button>
+            <Label x:Name="Login_Mistakes" Content="" Margin="633,380,10,75" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14"/>
+
+            <Button x:Name="Login_AboutRef_Btn" Style="{DynamicResource ButtonStyle2}" Content="About" Margin="329,329,505,180" Background="#454081" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Normal" Click="Login_AboutRef_Btn_Click"></Button>
+
+
+            <Label Content="Ще не маєте акаунту?" Margin="339,495,460,20" Foreground="White" FontWeight="Bold" FontSize="18" Opacity="0.71"/>
+            <Label x:Name="RegistrationOpen" Cursor="Hand" Content="Зареєструйтеся" Margin="540,495,310,20" Foreground="#FFF47458" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="RegistrationOpen_MouseLeftButtonDown"/>
+
+        </Grid>
+        <Grid x:Name="About" Margin="-1040,0,1040,0">
+            <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
+            <Border Background="#FF5A54A4" CornerRadius="35" Margin="178,155,178,135"></Border>
+            <Label Content="РОБОТУ ВИНОНАВ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="198,85,198,410" Foreground="White" FontFamily="Arial Black" FontSize="36"></Label>
+            <Image Source="/Screenshot_1.png" Margin="444,20,444,470" ></Image>
+            <Label Content="Студент 1 курсу ФПМ" Margin="350,170,380,330" Foreground="White" FontWeight="Bold" FontSize="24" Opacity="0.6"/>
+            <Label Content="Групи КП-12" Margin="418,225,418,275" Foreground="White" FontWeight="Bold" FontSize="24" Opacity="0.6"/>
+            <Label Content="Онасенко Олексій Володимирович" Margin="284,280,284,220" Foreground="White" FontWeight="Bold" FontSize="24" Opacity="0.6"/>
+            <Button x:Name="About_Btn" Style="{DynamicResource ButtonStyle1}" Content="Повернутися"  Margin="416,350,418,160" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Click="About_Btn_Click"></Button>
+
+        </Grid>
+        <Grid x:Name="UserData" Margin="1055,0,-1055,0">
+            <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
+            <Image Source="/Screenshot_1.png" Margin="444,20,444,470" />
+
+            <Label Content="ЗМІНА ДАНИХ КОРИСТУВАЧА" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="184,85,184,410" Foreground="White" FontFamily="Arial Black" FontSize="36"></Label>
+            <TextBox x:Name="UserData_Surname" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="235,172,505,336" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
+            <Label Content="Прізвище" Margin="245,170,686,357" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="UserData_Name" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="505,172,235,336" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Width="260"/>
+            <Label Content="Ім'я" Margin="514,170,417,357" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="UserData_newPassword" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="235,251,235,257" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42"/>
+            <Label Content="Новий пароль" Margin="241,249,675,278" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="UserData_newPasswordAgain" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="235,333,235,175" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42"/>
+            <Label Content="Повторити новий пароль" Margin="241,331,615,196" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+
+            <Button x:Name="UserData_SignUp" Style="{DynamicResource ButtonStyle1}" Content="Confirm"  Margin="505,400,301,109" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Click="UserData_SignUp_Click"></Button>
+            <Button x:Name="UserData_LogOut" Style="{DynamicResource ButtonStyle2}" Content="Log out" Margin="301,400,505,109" Background="#454081" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Normal" Click="UserData_LogOut_Click"></Button>
+            <Label x:Name="UserData_Mistakes" Content="" Margin="245,446,398,10" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14"/>
+
+        </Grid>
+
+        <Grid x:Name="Registration" Margin="0,590,0,-590" >
+            <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
+            <Image Source="/Screenshot_1.png" Margin="431,20,457,470" />
+
+            <TextBox x:Name="Registration_LoginForm" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="222,173,248,335" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
+            <Label Content="Логін" Margin="228,173,720,354" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+
+            <Label Content="СТВОРИТИ НОВИЙ АКАУНТ" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="171,85,197,410" Foreground="White" FontFamily="Arial Black" FontSize="36"></Label>
+            <TextBox x:Name="Registration_Surname" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="222,242,518,266" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
+            <Label Content="Прізвище" Margin="228,240,703,287" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="Registration_Name" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="492,242,248,266" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Width="260"/>
+            <Label Content="Ім'я" Margin="500,240,431,288" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="Registration_NewPassword" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="222,320,518,188" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42"/>
+            <Label Content="Новий пароль" Margin="228,318,688,209" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+            <TextBox x:Name="Registration_NewPasswordAgain" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="492,320,248,188" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42"/>
+            <Label Content="Повторити новий пароль" Margin="492,318,364,209" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
+
+            <Button x:Name="Registration_CreateBtn" Style="{DynamicResource ButtonStyle1}" Content="Create account" Margin="396,405,422,105" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Click="Registration_CreateBtn_Click"></Button>
+
+            <Label x:Name="Registration_Mistakes" Content="" Margin="633,405,10,51" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14"/>
+
+            <Label Content="Вже маєте акаунт?" Margin="361,495,463,20" Foreground="White" FontWeight="Bold" FontSize="18" Opacity="0.71"/>
+            <Label Cursor="Hand" Content="Увійти" Margin="534,495,386,20" Foreground="#FFF47458" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="LoginOpen_MouseLeftButtonDown"/>
+        </Grid>
+
+        <Grid x:Name="AdminPanel" Margin="1055,590,-1055,-590" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown">
+            <Border CornerRadius="35"  Background="#4E498D"></Border>
+            <Image Source="/Screenshot_1.png" Margin="38,10,883,485" />
+
+            <Label Content="РЕЖИМ АДМІНІСТРАТОРА" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="130,10,410,485" Foreground="White" FontFamily="Arial Black" FontSize="30"></Label>
+            <Grid x:Name="AdminPanel_ChangePassword" Margin="615,0,10,10">
+                <Border CornerRadius="35" Background="#FF655CC7" Margin="15,0,-10,235"></Border>
+                <Label Content="Зміна паролю адміністратора" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" FontFamily="Arial Black" FontSize="20" Margin="29,0,0,480" HorizontalAlignment="Left" Width="347"></Label>
+                <PasswordBox x:Name="AdminPanel_ChangePassword_OldField" Style="{DynamicResource PasswordBoxStyle1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Background="#FF7F77D4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42" Margin="56,58,29,440"/>
+                <Label Content="Поточний пароль" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.75" Margin="56,55,220,459"/>
+                <TextBox x:Name="AdminPanel_ChangePassword_NewField" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Background="#FF7F77D4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Margin="56,119,29,379"/>
+
+                <Label Content="Новий пароль" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.75" Margin="56,116,235,398"/>
+                <Button x:Name="AdminPanel_ChangePassword_Btn" Style="{DynamicResource ButtonStyle1}" Content="Confirm" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Margin="125,175,100,323" Click="AdminPanel_ChangePassword_Btn_Click"></Button>
+                <Label x:Name="AdminPanel_ChangePassword_Mistakes" Content="" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14" Margin="40,222,10,245"/>
+            </Grid>
+            <Grid x:Name="AdminPanel_AddUser" Margin="625,285,0,0" Height="265" VerticalAlignment="Top">
+                <Border CornerRadius="35" Background="#FF655CC7" Margin="5,25,0,0"></Border>
+                <Label Content="Додати нового користувача" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" FontFamily="Arial Black" FontSize="20" HorizontalAlignment="Center" Width="347" Margin="0,31,0,190"></Label>
+
+                <TextBox x:Name="AdminPanel_AddUser_NewLogin" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Background="#FF7F77D4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16" Height="42" Margin="47,80,38,143"/>
+                <Label Content="Логін" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.75" Margin="55,80,278,161"/>
+
+                <Button x:Name="AdminPanel_AddUser_Btn" Style="{DynamicResource ButtonStyle1}" Content="Confirm" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Margin="112,145,113,80" Click="AdminPanel_AddUser_Btn_Click"></Button>
+                <Label x:Name="AdminPanel_AddUser_Mistakes" Content="" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14" Margin="28,190,19,10"/>
+            </Grid>
+            <Grid Height="50" Background="#FFF47458" Margin="15,85,397,415">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Логін" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></Label>
+                <Label Grid.Column="1" Content="Прізвище" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></Label>
+                <Label Grid.Column="2" Content="Ім'я" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></Label>
+                <Label Grid.Column="3" Content="Пароль" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></Label>
+                <Label Grid.Column="4" Content="Доступ" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></Label>
+
+
+            </Grid>
+            <Grid x:Name="AdminPanel_UsersList" Margin="15,135,380,70">
+                <!--<DataGrid x:Name="AdminPanel_UsersList_DG" RowBackground = "#FF655CC7" Background="#FF655CC7" BorderBrush="{x:Null}" Foreground="White" ColumnWidth="SizeToHeader">
+                    
+                </DataGrid>-->
+                <ScrollViewer Background="#FF655CC7">
+                    <StackPanel x:Name="AdminPanel_UsersList_Data">
+                       
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Button x:Name="AdminPanel_Btn" Style="{DynamicResource ButtonStyle2}" Content="Log out" Background="#454081" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Normal" Margin="220,495,612,15" Click="AdminPanel_Btn_Click"></Button>
+
+        </Grid>
+    </Grid>
+</Window>
