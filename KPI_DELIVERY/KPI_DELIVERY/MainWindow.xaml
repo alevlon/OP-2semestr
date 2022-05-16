@@ -1,0 +1,97 @@
+﻿<Window x:Class="KPI_DELIVERY.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KPI_DELIVERY"
+        mc:Ignorable="d"
+        Title="MainWindow" Style="{DynamicResource for_noresize_window}" Width="1000" Height="700"  WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Padding="0" SizeToContent="WidthAndHeight"
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
+    <Grid x:Name="VisibleWindow">
+
+        <!--StartWindow-->
+        <Grid x:Name="Menu" HorizontalAlignment="Left" Width="260" Height="700" VerticalAlignment="Bottom">
+            <Border HorizontalAlignment="Left" Width="260" Height="700" VerticalAlignment="Center" Background="White"  />
+            <Image Width="89" Height="81" Source="/Image/1485477030-mail_78575 (2).png" Margin="86,0,86,619"/>
+            <TextBox Style="{DynamicResource TextBoxStyle1}" TextWrapping="Wrap" Text="KPI SUBSCRIBE" Margin="30,71,30,565" HorizontalContentAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF134563" FontSize="28" FontFamily="Arial Black" SelectionOpacity="1" IsEnabled="False"/>
+
+            <Grid Margin="0,455,0,0">
+                <Image Source="/Image/icons8-пользователь-без-половых-признаков-100.png" Margin="0,0,188,140" HorizontalAlignment="Right" Width="60" Height="60" VerticalAlignment="Bottom"/>
+                <Image  Source="/Image/icons8-жалоба-100.png" Width="60" Height="60" Margin="0,0,183,70" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <Image Height="50" Width="50" Source="/Image/UserEdit_40958.png" Margin="17,0,193,10" VerticalAlignment="Bottom"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Користувач" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Right" Width="104" Margin="0,0,65,185" Height="40" VerticalAlignment="Bottom"/>
+                <Button Style="{DynamicResource For_round_buttton}" Content="Sign in" BorderBrush="#FF134563" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF134563" Margin="81,0,26,10" Height="40" VerticalAlignment="Bottom"/>
+                <Button Style="{DynamicResource For_round_buttton}" Content="Sign in" BorderBrush="#FF134563" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF134563" Margin="82,0,25,80" Height="40" VerticalAlignment="Bottom"/>
+                <Button x:Name="Registration_btn" Style="{DynamicResource For_round_buttton}" Content="Sign Up" BorderBrush="#FF134563" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF134563" Margin="0,0,15,150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="Registration_btn_Click"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Оператор" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="104" Margin="81,0,0,110" Height="40" VerticalAlignment="Bottom"/>
+                <Button x:Name="Login_btn" Style="{DynamicResource For_round_buttton}" Content="Sign In"  BorderBrush="#FF134563" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF134563" Margin="0,0,105,150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="78" Click="Login_btn_Click"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Завідувач" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="104" Margin="82,0,0,35" Height="50" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="Top_Menu" Margin="260,0,-3,670">
+            <Border Height="30" VerticalAlignment="Center" Background="White" HorizontalAlignment="Left" Width="740" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"/>
+            <Button x:Name="Exit_btn" Style="{DynamicResource ButtonStyle2}" Content="╳"  Padding="0,-3, 0, 0" Margin="696,1,0,1" Background="White" BorderBrush="White" Click="Exit_btn_Click" HorizontalAlignment="Left" Width="43"></Button>
+            <Button x:Name="Hide_btn" Style="{DynamicResource ButtonStyle1}" Content="—"  Padding="0,-3, 0, 0" Margin="649,1,51,1" Background="White" BorderBrush="White" Click="Hide_btn_Click"/>
+            <!--<Label Margin="222,1,0,-1" Content="Роботу виконав Онасенко О. В." FontFamily="Arial Black" FontSize="16" Foreground="#FF134563" HorizontalAlignment="Left" Width="296"/>-->
+        </Grid>
+        <Grid x:Name="EmptyField" HorizontalAlignment="Left" Width="740" Margin="260,0,0,0" Height="670" VerticalAlignment="Bottom">
+            <Border HorizontalAlignment="Center" Height="670" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="740" Background="#FF134563"/>
+        </Grid>
+        <!--StartWindow-->
+
+        <!--RegWindow-->
+        <Grid x:Name="Registration" Height="586" VerticalAlignment="Top" Margin="1075,99,-775,0">
+            <Border CornerRadius="25" HorizontalAlignment="Center" Height="586" VerticalAlignment="Center" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainRegistration" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+                <Label Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign In" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="18" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="104" Margin="65,0,0,483" Height="40" VerticalAlignment="Bottom" MouseLeftButtonDown="LoginWindowOpen"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign Up" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="18" FontWeight="Normal" Foreground="#FF5957BA" HorizontalAlignment="Left" Width="104" Margin="221,0,0,483" Height="40" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="RegistrationSurname" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="51,260,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <TextBox x:Name="RegistrationFirstName" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="51,335,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <TextBox x:Name="RegistrationMiddleName" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="51,415,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <TextBox x:Name="RegistrationLoginTB" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="49,103,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <TextBox x:Name="RegistrationPassword" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="49,178,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Прізвище *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="65" Margin="67,0,0,286" Height="15" VerticalAlignment="Bottom"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Ім'я *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="32" Margin="73,0,0,211" Height="15" VerticalAlignment="Bottom"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="По батькові *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="75" Margin="65,0,0,131" Height="15" VerticalAlignment="Bottom" RenderTransformOrigin="0.467,0"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Пароль *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="48" Margin="65,0,0,368" Height="15" VerticalAlignment="Bottom"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Логін *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="48" Margin="65,0,0,443" Height="15" VerticalAlignment="Bottom"/>
+                <Rectangle Width="1" Height="400" Margin="335,75,314,71" Stroke="#FF828282" Opacity="0.8"></Rectangle>
+
+                <!--<TextBox x:Name="RegistrationStreet" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="380,103,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>-->
+
+                <ComboBox IsEditable="True" x:Name="RegistrationStreets" Style="{DynamicResource ComboBoxStyle1}" Margin="380,103,34,410" Background="White" FontSize="20" FontFamily="Myriad Pro" Foreground="#FF828282" FontWeight="Normal"></ComboBox>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Вулиця *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="55" Margin="395,0,0,443" Height="15" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="RegistrationHouse" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="380,178,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Будинок *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="65" Margin="395,0,0,368" Height="15" VerticalAlignment="Bottom"/>
+                <Button x:Name="SubmitRegistration" Style="{DynamicResource Submit_Button}" Content="Підтвердити" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="89,483,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" RenderTransformOrigin="0.5,0.175" Click="SubmitRegistration_Click"/>
+                <Label x:Name="RegistrationMistake" HorizontalContentAlignment="Left" Content="" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="14" FontWeight="Normal" Foreground="#FFDE5454" HorizontalAlignment="Left" Width="269" Margin="356,0,0,10" Height="72" VerticalAlignment="Bottom"/>
+
+            </Grid>
+        </Grid>
+        <!--RegWindow-->
+
+        <!--LogindWindow-->
+        <Grid x:Name="Login" Height="586" VerticalAlignment="Top" Margin="1075,-514,-775,0">
+            <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainLogin" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign In" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="18" FontWeight="Normal" Foreground="#FF5957BA" HorizontalAlignment="Left" Width="104" Margin="65,0,0,483" Height="40" VerticalAlignment="Bottom"/>
+                <Label Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign Up" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="18" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="104" Margin="221,0,0,483" Height="40" VerticalAlignment="Bottom" MouseLeftButtonDown="RegistrationWindowOpen"/>
+
+                <TextBox x:Name="LoginLoginTB"  TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="0,169,0,0" Width="330" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF828282"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Логін" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Bold" Foreground="#FF828282" HorizontalAlignment="Center" Width="104" Margin="0,139,0,0" Height="30" VerticalAlignment="Top" FontSize="22"/>
+                <PasswordBox x:Name="LoginPassword" Style="{DynamicResource PasswordBoxStyle1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Background="White" BorderBrush="#FFABADB3" SelectionBrush="White" Foreground="#FF828282" FontSize="16" Margin="160,273,160,239"/>
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Пароль" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Bold" Foreground="#FF828282" HorizontalAlignment="Center" Width="104" Margin="0,238,0,0" Height="30" VerticalAlignment="Top" FontSize="22"/>
+
+                <Button x:Name="LoginEnter" Style="{DynamicResource Submit_Button}" Content="Увійти" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="0,364,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Center" Width="166" RenderTransformOrigin="0.5,0.175" Click="LoginEnter_Click"/>
+                <Label x:Name="LoginMistake" HorizontalContentAlignment="Center" Content="" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="14" FontWeight="Normal" Foreground="#FFDE5454" HorizontalAlignment="Center" Width="350" Margin="0,434,0,0" Height="59" VerticalAlignment="Top"/>
+
+            </Grid>
+        </Grid>
+        <!--LogindWindow-->
+
+
+
+    </Grid>
+</Window>

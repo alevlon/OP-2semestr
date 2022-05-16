@@ -1,0 +1,222 @@
+﻿<Window x:Class="KPI_DELIVERY.UserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KPI_DELIVERY"
+        mc:Ignorable="d"
+        Title="UserWindow" Style="{DynamicResource for_noresize_window}" Width="1000" Height="700" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Padding="0" SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="Order_Button" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                            <Border x:Name="border" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF12C847"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF12C847"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFFF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF12C847"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF12C847"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+    <Grid x:Name="VisibleWindow">
+
+        <Grid x:Name="Menu" HorizontalAlignment="Left" Width="260" Height="700" VerticalAlignment="Bottom">
+            <Border HorizontalAlignment="Left" Width="260" Height="700" VerticalAlignment="Center" Background="White"  />
+            <Image Width="89" Height="81" Source="/Image/1485477030-mail_78575 (2).png" Margin="86,0,86,619"/>
+            <TextBox Style="{DynamicResource TextBoxStyle1}" TextWrapping="Wrap" Text="KPI SUBSCRIBE" Margin="30,71,30,565" HorizontalContentAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{x:Null}" Foreground="#FF134563" FontSize="28" FontFamily="Arial Black" SelectionOpacity="1" IsEnabled="False"/>
+
+            <Button x:Name="LogOutBtn" Style="{DynamicResource For_exit_round_buttton}" Content="Вийти" BorderBrush="#FFDE0051" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FFDE0051" Margin="54,650,54,0" Height="40" VerticalAlignment="Top" Click="LogOutBtn_Click"/>
+
+            <Grid Margin="0,175,0,330">
+                <Image Source="/Image/icons8-юзер-в-круге-64.png" Margin="0,0,188,125" HorizontalAlignment="Right" Width="60" Height="60" VerticalAlignment="Bottom"/>
+                <Image Source="/Image/icons8-каталог-64.png" Width="50" Height="50" Margin="0,0,193,70" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <Image Source="/Image/icons8-настройки-50.png" Height="50" Width="50"  Margin="17,0,193,10" VerticalAlignment="Bottom"/>
+                <Label HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Мої підписки" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Right" Width="138" Margin="0,0,40,133" Height="44" VerticalAlignment="Bottom"/>
+                <Label x:Name="SettingsCatalog" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Каталог" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="138" Margin="82,0,0,70" Height="44" VerticalAlignment="Bottom" MouseLeftButtonDown="SettingsCatalog_MouseLeftButtonDown"/>
+                <Label x:Name="SettingsMenu" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Налаштування" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="138" Margin="82,0,0,13" Height="44" VerticalAlignment="Bottom" MouseLeftButtonDown="SettingsMenu_MouseLeftButtonDown"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Top_Menu" Margin="260,0,-3,670">
+            <Border Height="30" VerticalAlignment="Center" Background="White" HorizontalAlignment="Left" Width="740" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"/>
+            <Button x:Name="Exit_btn" Style="{DynamicResource ButtonStyle2}" Content="╳"  Padding="0,-3, 0, 0" Margin="696,1,0,1" Background="White" BorderBrush="White" Click="Exit_btn_Click" HorizontalAlignment="Left" Width="43"></Button>
+            <Button x:Name="Hide_btn" Style="{DynamicResource ButtonStyle1}" Content="—"  Padding="0,-3, 0, 0" Margin="649,1,51,1" Background="White" BorderBrush="White" Click="Hide_btn_Click"/>
+        </Grid>
+
+        <Grid x:Name="EmptyField" HorizontalAlignment="Left" Width="740" Margin="260,0,0,0" Height="670" VerticalAlignment="Bottom">
+            <Border HorizontalAlignment="Center" Height="670" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="740" Background="#FF134563"/>
+        </Grid>
+
+        <Grid x:Name="Catalog" Height="586" VerticalAlignment="Top" Margin="1100,-236,-800,0">
+            <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainCatalog" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+                <TextBox x:Name="CatalogSearch" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="25" SelectionBrush="#FF757575" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF717171" Margin="365,31,0,0" BorderBrush="#FF9E9E9E" TextChanged="CatalogSearch_TextChanged"/>
+                <Image Source="/Image/icons8-поиск-48.png" HorizontalAlignment="Right" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0,0,290,490"/>
+
+
+                <ScrollViewer Background="White" Margin="0,106,0,0">
+                    <StackPanel x:Name="CatalogPanel">
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Grid Height="30" Margin="0,76,15,440">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="CatalogSortByName" Cursor="Hand" Grid.Column="0" Content="Назва" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
+                    <Label x:Name="CatalogSortByPrice" Cursor="Hand" Grid.Column="1" Content="Ціна" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
+                    <Label x:Name="CatalogSortByType" Cursor="Hand" Grid.Column="2" Content="Тип" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
+                    <Label x:Name="CatalogSortByStatus" Cursor="Hand" Grid.Column="3" Content="Статус" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Settings" Margin="1100,365,-800,-251">
+            <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainSettings" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Прізвище *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="65" Margin="65,0,0,442" Height="16" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsSurname" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="33" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282" Margin="49,104,0,0"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Ім'я *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="33" Margin="65,0,0,368" Height="15" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsFirstname" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="33" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282" Margin="49,178,0,0"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="По батькові *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="70" Margin="65,0,0,289" Height="15" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsMiddlename" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="32" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF828282" Margin="49,0,0,0"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Вулиця *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="55" Margin="395,0,0,443" Height="15" VerticalAlignment="Bottom"/>
+                <ComboBox x:Name="SettingsStreets" IsEditable="True" Style="{DynamicResource ComboBoxStyle1}" Margin="380,103,34,410" Background="White" FontSize="20" FontFamily="Calibri" Foreground="#FF828282"></ComboBox>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Будинок *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="65" Margin="395,0,0,368" Height="15" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsHouse" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="380,178,0,0" Width="236" Height="33" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Новий пароль *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="80" Margin="65,0,0,214" Height="14" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsNewPassword" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="49,332,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+
+                <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Повторити новий пароль *" Padding="0, 0, 0, 2" FontFamily="Calibri" FontWeight="Normal" Foreground="#FF828282" HorizontalAlignment="Left" Width="135" Margin="65,0,0,136" Height="16" VerticalAlignment="Bottom"/>
+                <TextBox x:Name="SettingsRepeatNewPassword" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Margin="49,410,0,0" Width="236" Height="34" SelectionBrush="#FFC0C6C9" FontFamily="Myriad Pro" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF828282"/>
+
+                <Label Content="Налаштування" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="200,20,185,481" Foreground="#FF5957BA" FontFamily="Arial" FontSize="28" FontWeight="Normal"></Label>
+                <Rectangle Width="1" Margin="332,88,317,70" Stroke="#FF828282" Opacity="0.8"/>
+
+                <Label x:Name="SettingsMistake" HorizontalContentAlignment="Left" Content="" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="14" FontWeight="Normal" Foreground="#FFDE5454" HorizontalAlignment="Left" Width="269" Margin="356,0,0,10" Height="72" VerticalAlignment="Bottom"/>
+                <Button x:Name="SettingsSubmit" Style="{DynamicResource Submit_Button}" Content="Підтвердити" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="89,483,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165" RenderTransformOrigin="0.5,0.175" Click="SettingsSubmit_Click"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Checkout" Margin="1820,365,-1520,-251">
+            <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainCheckout" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+                <Label Content="Дані видання" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="255,30,225,472" Foreground="#FF5957BA" FontFamily="Segoe UI" FontSize="26" FontWeight="Normal"></Label>
+
+                <Label Content="Назва видання: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="130,88,0,0" Width="163"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,92,115,425" >
+                    <Label x:Name="CheckoutTitle" HorizontalAlignment="Center" Content="Приклад видання" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Ціна (за місяць): " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="120,135,0,0" Width="180"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,139,215,378" >
+                    <Label x:Name="CheckoutPrice" HorizontalAlignment="Center" Content="$99.00" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Дані замовника" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="255,191,195,310" Foreground="#FF5957BA" FontFamily="Segoe UI" FontSize="26" FontWeight="Normal"/>
+
+                <Label Content="Прізвище: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="182,247,0,0" Width="120"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,251,155,266" >
+                    <Label x:Name="CheckoutSurname" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Ім'я: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="240,294,0,0" Width="60"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,298,155,219" >
+                    <Label x:Name="CheckoutFirstname" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="По батькові: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="162,339,0,0" Width="133"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,345,155,172" >
+                    <Label x:Name="CheckoutMiddlename" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <!--<Label Content="Адреса: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="198,376,0,0" Width="90"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="295,382,165,135" >
+                    <Label x:Name="CheckoutAddress" HorizontalAlignment="Center" Content="вул. Богуна, буд. 2" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>-->
+
+                <Label Content="Період (місяць): " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="355,476,0,0" Width="170"/>
+                <ComboBox x:Name="CheckoutPeriod" Style="{DynamicResource ComboBoxStyleCheckout}" Margin="535,480,49,38" Background="White" FontSize="16" FontFamily="Calibri" Foreground="#FF9E9EA4" SelectedIndex="0">
+                    <ComboBoxItem>1</ComboBoxItem>
+                    <ComboBoxItem>2</ComboBoxItem>
+                    <ComboBoxItem>3</ComboBoxItem>
+                    <ComboBoxItem>4</ComboBoxItem>
+                    <ComboBoxItem>5</ComboBoxItem>
+                    <ComboBoxItem>6</ComboBoxItem>
+                    <ComboBoxItem>7</ComboBoxItem>
+                    <ComboBoxItem>8</ComboBoxItem>
+                    <ComboBoxItem>9</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
+                    <ComboBoxItem>11</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                </ComboBox>
+
+                <Button x:Name="CheckoutSubmit" Style="{DynamicResource Submit_Button}" Content="Підтвердити" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="96,474,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" RenderTransformOrigin="0.5,0.175"/>
+                <Button x:Name="CheckoutBackBtn" Cursor="Hand" Style="{DynamicResource ButtonBack}" Content="←" Margin="35,10,585,492" FontSize="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3A3C3F" Click="CheckoutBackBtn_Click"></Button>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

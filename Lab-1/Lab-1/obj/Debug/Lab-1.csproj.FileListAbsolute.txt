@@ -44,3 +44,4 @@ D:\KPI\Programming\2 семестр\OP-2semestr\Lab-1\Lab-1\obj\Debug\Lab-1.cspr
 D:\KPI\Programming\2 семестр\OP-2semestr\Lab-1\Lab-1\obj\Debug\Lab-1.csproj.CoreCompileInputs.cache
 D:\KPI\Programming\2 семестр\OP-2semestr\Lab-1\Lab-1\obj\Debug\Lab-1.exe
 D:\KPI\Programming\2 семестр\OP-2semestr\Lab-1\Lab-1\obj\Debug\Lab-1.pdb
+D:\KPI\Programming\2 семестр\OP-2semestr\Lab-1\Lab-1\obj\Debug\Lab-1.csproj.SuggestedBindingRedirects.cache
