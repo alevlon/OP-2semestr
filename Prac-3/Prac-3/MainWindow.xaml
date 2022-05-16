@@ -22,7 +22,7 @@
             <Label x:Name="Login_Mistakes" Content="" Margin="633,380,10,75" Foreground="#FFFF9595" FontWeight="Bold" FontSize="14"/>
 
             <Button x:Name="Login_AboutRef_Btn" Style="{DynamicResource ButtonStyle2}" Content="About" Margin="329,329,505,180" Background="#454081" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Normal" Click="Login_AboutRef_Btn_Click"></Button>
-
+            <Button Content="╳" Padding="0,-3,0,0" Style="{DynamicResource ButtonStyle1}" Margin="940,20,20,500" Background="#FFC13636"  BorderBrush="{x:Null}" Foreground="White" Click="Exit_Btn_Click"></Button>
 
             <Label Content="Ще не маєте акаунту?" Margin="339,495,460,20" Foreground="White" FontWeight="Bold" FontSize="18" Opacity="0.71"/>
             <Label x:Name="RegistrationOpen" Cursor="Hand" Content="Зареєструйтеся" Margin="540,495,310,20" Foreground="#FFF47458" FontWeight="Bold" FontSize="18" MouseLeftButtonDown="RegistrationOpen_MouseLeftButtonDown"/>
@@ -37,11 +37,13 @@
             <Label Content="Групи КП-12" Margin="418,225,418,275" Foreground="White" FontWeight="Bold" FontSize="24" Opacity="0.6"/>
             <Label Content="Онасенко Олексій Володимирович" Margin="284,280,284,220" Foreground="White" FontWeight="Bold" FontSize="24" Opacity="0.6"/>
             <Button x:Name="About_Btn" Style="{DynamicResource ButtonStyle1}" Content="Повернутися"  Margin="416,350,418,160" Background="#FFF47458" BorderBrush="{x:Null}" Foreground="White" FontSize="18" FontFamily="Ebrima" FontWeight="Bold" Click="About_Btn_Click"></Button>
+            <Button Content="╳" Padding="0,-3,0,0" Style="{DynamicResource ButtonStyle1}" Margin="940,20,20,500" Background="#FFC13636"  BorderBrush="{x:Null}" Foreground="White" Click="Exit_Btn_Click"></Button>
 
         </Grid>
         <Grid x:Name="UserData" Margin="1055,0,-1055,0">
             <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
             <Image Source="/Screenshot_1.png" Margin="444,20,444,470" />
+            <Button Content="╳" Padding="0,-3,0,0" Style="{DynamicResource ButtonStyle1}" Margin="940,20,20,500" Background="#FFC13636"  BorderBrush="{x:Null}" Foreground="White" Click="Exit_Btn_Click"></Button>
 
             <Label Content="ЗМІНА ДАНИХ КОРИСТУВАЧА" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="184,85,184,410" Foreground="White" FontFamily="Arial Black" FontSize="36"></Label>
             <TextBox x:Name="UserData_Surname" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="235,172,505,336" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
@@ -62,6 +64,7 @@
         <Grid x:Name="Registration" Margin="0,590,0,-590" >
             <Border CornerRadius="35"  Background="#4E498D" MouseLeftButtonDown="Top_Menu_MouseLeftButtonDown"></Border>
             <Image Source="/Screenshot_1.png" Margin="431,20,457,470" />
+            <Button Content="╳" Padding="0,-3,0,0" Style="{DynamicResource ButtonStyle1}" Margin="940,20,20,500" Background="#FFC13636"  BorderBrush="{x:Null}" Foreground="White" Click="Exit_Btn_Click"></Button>
 
             <TextBox x:Name="Registration_LoginForm" Template="{DynamicResource TextBoxTemplate1}" Padding="5,0,0,5" VerticalContentAlignment="Bottom" Margin="222,173,248,335" Background="#FF5A54A4" BorderBrush="{x:Null}" SelectionBrush="White" Foreground="White" FontSize="16"/>
             <Label Content="Логін" Margin="228,173,720,354" Foreground="White" FontWeight="Bold" FontSize="10" Opacity="0.5"/>
@@ -88,6 +91,7 @@
             <Border CornerRadius="35"  Background="#4E498D"></Border>
             <Image Source="/Screenshot_1.png" Margin="38,10,883,485" />
 
+            
             <Label Content="РЕЖИМ АДМІНІСТРАТОРА" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="130,10,410,485" Foreground="White" FontFamily="Arial Black" FontSize="30"></Label>
             <Grid x:Name="AdminPanel_ChangePassword" Margin="615,0,10,10">
                 <Border CornerRadius="35" Background="#FF655CC7" Margin="15,0,-10,235"></Border>

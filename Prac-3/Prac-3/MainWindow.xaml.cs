@@ -342,6 +342,7 @@ namespace Prac_3
         private void AdminPanel_Btn_Click(object sender, RoutedEventArgs e)
         {
             Login_FieldForPassword.Password = "";
+            
 
             HideAllWindow();
             Login.Margin = new Thickness(0, 0, 0, 0);
@@ -442,6 +443,11 @@ namespace Prac_3
                 }
             }
             connection.Close();
+        }
+
+        private void Exit_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

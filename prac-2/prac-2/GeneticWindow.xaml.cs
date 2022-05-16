@@ -30,7 +30,7 @@ namespace prac_2
         static double percentMut = 0.9;
         List<List<int>> Population = new List<List<int>>();
         List<double> Roads = new List<double>();
-        static int sizePopulation = PointCount;
+        static int sizePopulation = 10;
 
         public GeneticWindow()
         {
@@ -148,55 +148,58 @@ namespace prac_2
             PlotPoints();
             PlotWay(GetBestWay());
         }
-
+        
         private List<int> GetBestWay()
         {
             Random rnd = new Random();
             List<int> way = new List<int>();
 
-            int x = rnd.Next(0, sizePopulation);
-            int y = rnd.Next(0, sizePopulation);
-            while (x == y) y = rnd.Next(0, sizePopulation);
-
-            List<int> firstChild = new List<int>();
-            List<int> secondChild = new List<int>();
-
-
-            //скрещивание
-            int gap = rnd.Next(2, PointCount - 1); 
-            for (int i = 0; i < gap; i++) 
+            for (int k = 0; k < PointCount; k++) 
             {
-                firstChild.Add(Population[x][i]);
-                secondChild.Add(Population[y][i]);
+                int x = rnd.Next(0, sizePopulation);
+                int y = rnd.Next(0, sizePopulation);
+                while (x == y) y = rnd.Next(0, sizePopulation);
+
+                List<int> firstChild = new List<int>();
+                List<int> secondChild = new List<int>();
+
+                //скрещивание
+                int gap = rnd.Next(2, PointCount - 1);
+                for (int i = 0; i < gap; i++)
+                {
+                    firstChild.Add(Population[x][i]);
+                    secondChild.Add(Population[y][i]);
+                }
+                for (int i = gap; i < PointCount; i++)
+                {
+                    int k1 = Population[y][i];
+                    if (!firstChild.Contains(k1)) firstChild.Add(k1);
+
+                    int k2 = Population[x][i];
+                    if (!secondChild.Contains(k2)) secondChild.Add(k2);
+                }
+                for (int i = gap; i < PointCount; i++)
+                {
+                    int k1 = Population[x][i];
+                    if (!firstChild.Contains(k1)) firstChild.Add(k1);
+
+                    int k2 = Population[y][i];
+                    if (!secondChild.Contains(k2)) secondChild.Add(k2);
+                }
+
+                //мутации
+                Mutation(firstChild);
+                Mutation(secondChild);
+
+                double firstChildRoad = CalculateRoad(firstChild);
+                double secondChildRoad = CalculateRoad(secondChild);
+
+                Population.Add(firstChild);
+                Roads.Add(firstChildRoad);
+                Population.Add(secondChild);
+                Roads.Add(secondChildRoad);
+
             }
-            for (int i = gap; i < PointCount; i++) 
-            {
-                int k1 = Population[y][i];
-                if (!firstChild.Contains(k1)) firstChild.Add(k1);
-
-                int k2 = Population[x][i];
-                if (!secondChild.Contains(k2)) secondChild.Add(k2);
-            }
-            for (int i = gap; i < PointCount; i++)
-            {
-                int k1 = Population[x][i];
-                if (!firstChild.Contains(k1)) firstChild.Add(k1);
-
-                int k2 = Population[y][i];
-                if (!secondChild.Contains(k2)) secondChild.Add(k2);
-            }
-
-            //мутации
-            Mutation(firstChild);
-            Mutation(secondChild);
-
-            double firstChildRoad = CalculateRoad(firstChild);
-            double secondChildRoad = CalculateRoad(secondChild);
-
-            Population.Add(firstChild);
-            Roads.Add(firstChildRoad);
-            Population.Add(secondChild);
-            Roads.Add(secondChildRoad);
 
             var d = Roads.Count / 2;
             while (d >= 1)
@@ -221,11 +224,11 @@ namespace prac_2
                 d = d / 2;
             }
 
-            Roads.RemoveAt(Roads.Count - 2);
-            Roads.RemoveAt(Roads.Count - 1);
-            Population.RemoveAt(Population.Count - 2);
-            Population.RemoveAt(Population.Count - 1);
-
+            for (int k = 0; k < 2 * PointCount; k++) 
+            {
+                Roads.RemoveAt(Roads.Count - 1);
+                Population.RemoveAt(Population.Count - 1);
+            }
 
             way = Population[0];
             return way;
@@ -276,6 +279,7 @@ namespace prac_2
             double sum = 0;
             for (int i = 1; i < arr.Count; i++) sum += Sqrt(Pow(pC[arr[i]].X - pC[arr[i - 1]].X, 2) + Pow(pC[arr[i]].Y - pC[arr[i - 1]].Y, 2));
 
+            sum += Sqrt(Pow(pC[arr[0]].X - pC[arr[arr.Count - 1]].X, 2) + Pow(pC[arr[0]].Y - pC[arr[arr.Count - 1]].Y, 2));
             return sum;
         }
         private void CalculateRoads(List<List<int>> arr)
@@ -288,6 +292,8 @@ namespace prac_2
                 {
                     sum += Sqrt(Pow(pC[arr[i][j]].X - pC[arr[i][j - 1]].X, 2) + Pow(pC[arr[i][j]].Y - pC[arr[i][j - 1]].Y, 2));
                 }
+
+                sum += Sqrt(Pow(pC[arr[i][0]].X - pC[arr[i][arr[i].Count - 1]].X, 2) + Pow(pC[arr[i][0]].Y - pC[arr[i][arr[i].Count - 1]].Y, 2));
                 Roads.Add(sum);
             }
 

@@ -105,6 +105,7 @@
                 <ListBoxItem Content="10"/>
                 <ListBoxItem Content="5"/>
                 <ListBoxItem Content="1"/>
+                
             </ComboBox>
             <Button x:Name="StopStart" BorderThickness="4" Content="Запустити / Зупинити" Grid.Row="5" FontFamily="Arial Black" FontSize="16" Style="{DynamicResource ButtonStyle1}" Background="#FF27276D" Foreground="White" BorderBrush="White" Click="StopStart_Click"/>
             <Button x:Name="ExitBtn" BorderThickness="4" Content="Завершити" Grid.Row="7" FontFamily="Arial Black" FontSize="16" Style="{DynamicResource ButtonStyle1}" Background="#FFB32D2D" Foreground="White" BorderBrush="White" Click="ExitBtn_Click"/>
