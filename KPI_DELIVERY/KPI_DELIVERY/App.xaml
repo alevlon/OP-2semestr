@@ -9,6 +9,8 @@
                 <ResourceDictionary Source="Theme/ComboBoxStreets.xaml"/>
                 <ResourceDictionary Source="Theme/Styles.xaml"/>
                 <ResourceDictionary Source="Theme/ComboBoxCheckout.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonStyleCatalog.xaml"/>
+                <ResourceDictionary Source="Theme/ButtonStyleSubscribtion.xaml"/>
             </ResourceDictionary.MergedDictionaries>    
         </ResourceDictionary>
     </Application.Resources>

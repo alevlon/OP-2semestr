@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\KPI\Programming\Курсач\KPI_DELIVERY\KPI_DELIVERY\obj\Debug\
+D:\KPI\Programming\2 семестр\OP-2semestr\KPI_DELIVERY\KPI_DELIVERY\obj\Debug\
 KPI_DELIVERY
 none
 false
 DEBUG;TRACE
-D:\KPI\Programming\Курсач\KPI_DELIVERY\KPI_DELIVERY\App.xaml
-5-109890477
+D:\KPI\Programming\2 семестр\OP-2semestr\KPI_DELIVERY\KPI_DELIVERY\App.xaml
+81596206061
 
-7774881436
+161040534669
 15-96315597
-MainWindow.xaml;Theme\ComboBoxCheckout.xaml;Theme\ComboBoxStreets.xaml;Theme\Styles.xaml;UserWindow.xaml;
+MainWindow.xaml;OperatorWindow.xaml;Theme\ButtonStyleCatalog.xaml;Theme\ButtonStyleSubscribtion.xaml;Theme\ComboBoxCheckout.xaml;Theme\ComboBoxStreets.xaml;Theme\Styles.xaml;UserWindow.xaml;
 
-True
+False
 

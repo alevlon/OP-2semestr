@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Configuration;
 using System.Windows.Controls;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Collections.Generic;
+
 
 namespace KPI_DELIVERY
 {
@@ -23,16 +17,18 @@ namespace KPI_DELIVERY
     
     public partial class MainWindow : Window
     {
-        string connectionString = null;
-        SqlConnection connection = null;
-        SqlCommand command;
-        public int count_for_enter = 3;
-        //Data Source=ALEVLON;Initial Catalog=Kpi_Subscribe;Integrated Security=True
+        private int count_for_enter = 3;
+        private SQLHandler handler;
+
         public MainWindow()
         {
             InitializeComponent();
-            connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            RegistrationGetStreets();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            handler = new SQLHandler(connection);
+
         }
         
 
@@ -49,13 +45,14 @@ namespace KPI_DELIVERY
         {
             DragMove(); 
         }
-        private void Registration_btn_Click(object sender, RoutedEventArgs e) //Відкриття вікна вхід, з меню
+        private void Registration_btn_Click(object sender, RoutedEventArgs e) //Відкриття вікна реєстрації, з меню
         {
+            RegistrationGetStreets();
             HideAllWindow();
 
             Registration.Margin = new Thickness(282, 72, 18, 0);
         }
-        private void Login_btn_Click(object sender, RoutedEventArgs e) //Відкриття вікна реєстрації, з меню
+        private void Login_btn_Click(object sender, RoutedEventArgs e) //Відкриття вікна входу, з меню
         {
             HideAllWindow();
 
@@ -63,58 +60,46 @@ namespace KPI_DELIVERY
         }
 
 
-        //Регестрація та вхід
+        //Регестрація та вхід користувача
         private void LoginEnter_Click(object sender, RoutedEventArgs e) //вхід до акаунту
         {
             string login = LoginLoginTB.Text;
             string password = LoginPassword.Password;
-            connection = new SqlConnection(connectionString);
-            connection.Open();
-            if (connection.State == System.Data.ConnectionState.Open)
+            User UserTryToEnter = new User(login, password);
+            UserTryToEnter = handler.AuthorizationUser(UserTryToEnter);
+
+            if (UserTryToEnter.exception.Length == 0)
             {
-                string strQ = "SELECT * FROM Users WHERE Login='" + login + "';";
-                SqlDataAdapter adapter = new SqlDataAdapter(strQ, connection);
-
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                if (dt.Rows.Count == 0) LoginMistake.Content = "Введіть справжній логін";
-                else
+                UserWindow userWindow = new UserWindow(UserTryToEnter);
+                userWindow.Show();
+                Close();
+            }
+            else 
+            {
+                if (UserTryToEnter.exception == "Введіть справжній логін") LoginMistake.Content = UserTryToEnter.exception;
+                else 
                 {
-                    
-                    LoginMistake.Content = "";
-
-                    if (dt.Rows[0][1].ToString() == password)
-                    {
-                        LoginMistake.Content = "";
-                        count_for_enter = 3;
-
-                        string surname = dt.Rows[0][2].ToString();
-                        string firstname = dt.Rows[0][3].ToString();
-                        string middlename = dt.Rows[0][4].ToString();
-
-                        UserWindow userWindow = new UserWindow(login, password, surname, firstname, middlename);
-                        userWindow.Show();
-                        Close();
-                    }
-                    else
-                    {
-                        count_for_enter--;
-                        LoginMistake.Content = "Невірна спроба входу, залишилось \n" + count_for_enter.ToString() + " спроби";
-                        
-                        if (count_for_enter <= 0) 
-                        {
-                            LoginLoginTB.Text = "";
-                            LoginPassword.Password = "";
-                            count_for_enter = 3;
-                            
-                            MessageBox.Show("Невдала спробу входу до акаунту");
-                            LoginMistake.Content = "";
-                        }
-                    }
+                    count_for_enter--;
+                    LoginMistake.Content = "Невірна спроба входу, залишилось \n" + count_for_enter.ToString() + " спроби";
                 }
             }
-            connection.Close();
+                        
+            if (count_for_enter <= 0) 
+            {
+                LoginLoginTB.Text = "";
+                LoginPassword.Password = "";
+                count_for_enter = 3;
+                            
+                MessageBox.Show("Невдала спробу входу до акаунту");
+                LoginMistake.Content = "";
+            }
+
+        }
+        private void LoginWindowOpen(object sender, MouseButtonEventArgs e) //Відкриття вікна входу
+        {
+            HideAllWindow();
+
+            Login.Margin = new Thickness(282, 72, 18, 0);
         }
         private void SubmitRegistration_Click(object sender, RoutedEventArgs e) //Створення нового акаунту
         {
@@ -141,33 +126,20 @@ namespace KPI_DELIVERY
             
             if (RegistrationMistake.Content.ToString().Length == 0) 
             {
-                connection = new SqlConnection(connectionString);
-                connection.Open();
-                if (connection.State == System.Data.ConnectionState.Open)
+                string Login = RegistrationLoginTB.Text;
+                string Password = RegistrationPassword.Text;
+                string Surname = RegistrationSurname.Text;
+                string Firstname = RegistrationFirstName.Text;
+                string Middlename = RegistrationMiddleName.Text;
+                string StreetID;
+                ComboBoxItem item = RegistrationStreets.SelectedItem as ComboBoxItem;
+                StreetID = item.Uid;
+                string House = RegistrationHouse.Text;
+
+                try
                 {
-                    string Login = RegistrationLoginTB.Text;
-                    string Password = RegistrationPassword.Text;
-                    string Surname = RegistrationSurname.Text;
-                    string Firstname = RegistrationFirstName.Text;
-                    string Middlename = RegistrationMiddleName.Text;
-                    string StreetID;
-                    ComboBoxItem item = RegistrationStreets.SelectedItem as ComboBoxItem;
-                    StreetID = item.Uid;
-                    string House = RegistrationHouse.Text;
-
-                    try
+                    if (handler.CreateNewAccount(Login, Password, Surname, Firstname, Middlename, StreetID, House))
                     {
-                        string strQ = "INSERT INTO dbo.Users";
-                        strQ += $" values('{Login}', '{Password}', '{Surname}', '{Firstname}', '{Middlename}');";
-
-                        command = new SqlCommand(strQ, connection);
-                        command.ExecuteNonQuery();
-
-                        strQ = "INSERT INTO dbo.Location";
-                        strQ += $" values('{Login}', '{StreetID}', '{House}');";
-                        command = new SqlCommand(strQ, connection);
-                        command.ExecuteNonQuery();
-
                         RegistrationMistake.Content = "";
                         RegistrationLoginTB.Text = "";
                         RegistrationPassword.Text = "";
@@ -179,50 +151,78 @@ namespace KPI_DELIVERY
 
                         MessageBox.Show("Акаунт успішно створений");
                     }
-                    catch (Exception) 
-                    {
-                        RegistrationMistake.Content += "Такий логін вже існує!";
-                    }
+                    else throw new Exception();
+                }
+                catch (Exception) 
+                {
+                    RegistrationMistake.Content += "Такий логін вже існує!";
                 }
             }
         }
-        private void LoginWindowOpen(object sender, MouseButtonEventArgs e) //Відкриття вікна входу
+        private void RegistrationGetStreets() //Отримання списку з вулицями
         {
-            HideAllWindow();
-
-            Login.Margin = new Thickness(282, 72, 18, 0);
+            RegistrationStreets.Items.Clear();
+            foreach (Street street in handler.GetAllStreets()) 
+            {
+                RegistrationStreets.Items.Add(street.ToComboBoxItem());
+            }
         }
         private void RegistrationWindowOpen(object sender, MouseButtonEventArgs e)//Відкриття вікна реєстрації
         {
+            RegistrationGetStreets();
             HideAllWindow();
 
             Registration.Margin = new Thickness(282, 72, 18, 0);
         }
-        private void RegistrationGetStreets() //Отримання списку з вулицями
+
+
+        private void LoginOperator_Click(object sender, RoutedEventArgs e)
         {
-            connection = new SqlConnection(connectionString);
-            connection.Open();
-            if (connection.State == System.Data.ConnectionState.Open) 
+            HideAllWindow();
+            Operator.Margin = new Thickness(282, 72, 18, 0);
+        }
+        private void OperatorEnter_Click(object sender, RoutedEventArgs e)
+        {
+            if (OperatorID_TB.Text.Length == 0)
             {
-                string strQ = "SELECT * FROM dbo.Streets;";
-                command = new SqlCommand(strQ, connection);
-                
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read()) 
-                {
-                    string StreetId = reader.GetValue(0).ToString();
-                    string NameStreet = reader.GetValue(1).ToString();
-
-                    ComboBoxItem item = new ComboBoxItem();
-                    item.Uid = StreetId;
-                    item.Content = NameStreet;
-
-                    RegistrationStreets.Items.Add(item);
-                }
-                reader.Close();
+                OperatorMistake.Content = "Введіть справжній ідентифікатор";
+                return;
             }
-            connection.Close();
-        } 
+            else 
+                OperatorMistake.Content = "";
+
+            int ID = Convert.ToInt32(OperatorID_TB.Text);
+            string password = OperatorPassword_PB.Password;
+
+            Operator OperatorTryToEnter = new Operator(ID, password);
+            OperatorTryToEnter = handler.AuthorizationOperator(OperatorTryToEnter);
+
+            if (OperatorTryToEnter.exception.Length == 0)
+            {
+                OperatorWindow operatorWindow = new OperatorWindow(OperatorTryToEnter);
+                operatorWindow.Show();
+                Close();
+            }
+            else
+            {
+                if (OperatorTryToEnter.exception == "Введіть справжній ідентифікатор") OperatorMistake.Content = OperatorTryToEnter.exception;
+                else
+                {
+                    count_for_enter--;
+                    OperatorMistake.Content = "Невірна спроба входу, залишилось \n" + count_for_enter.ToString() + " спроби";
+                }
+            }
+
+            if (count_for_enter <= 0)
+            {
+                OperatorID_TB.Text = "";
+                OperatorPassword_PB.Password = "";
+                count_for_enter = 3;
+
+                MessageBox.Show("Невдала спробу входу");
+                OperatorMistake.Content = "";
+            }
+        }
 
 
         private void HideAllWindow() //Згорнути усі вікна

@@ -6,67 +6,7 @@
         xmlns:local="clr-namespace:KPI_DELIVERY"
         mc:Ignorable="d"
         Title="UserWindow" Style="{DynamicResource for_noresize_window}" Width="1000" Height="700" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Padding="0" SizeToContent="WidthAndHeight">
-    <Window.Resources>
-        <Style x:Key="FocusVisual">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
-        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
-        <Style x:Key="Order_Button" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                            <Border x:Name="border" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
-                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#FF12C847"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="#FF12C847"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFFFF"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#FF12C847"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="#FF12C847"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
-                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
-    </Window.Resources>
     <Grid x:Name="VisibleWindow">
 
         <Grid x:Name="Menu" HorizontalAlignment="Left" Width="260" Height="700" VerticalAlignment="Bottom">
@@ -80,7 +20,7 @@
                 <Image Source="/Image/icons8-юзер-в-круге-64.png" Margin="0,0,188,125" HorizontalAlignment="Right" Width="60" Height="60" VerticalAlignment="Bottom"/>
                 <Image Source="/Image/icons8-каталог-64.png" Width="50" Height="50" Margin="0,0,193,70" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                 <Image Source="/Image/icons8-настройки-50.png" Height="50" Width="50"  Margin="17,0,193,10" VerticalAlignment="Bottom"/>
-                <Label HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Мої підписки" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Right" Width="138" Margin="0,0,40,133" Height="44" VerticalAlignment="Bottom"/>
+                <Label x:Name="SettingsSubscribtion" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Мої підписки" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Right" Width="138" Margin="0,0,40,133" Height="44" VerticalAlignment="Bottom" MouseLeftButtonDown="SettingsSubscribtion_MouseLeftButtonDown"/>
                 <Label x:Name="SettingsCatalog" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Каталог" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="138" Margin="82,0,0,70" Height="44" VerticalAlignment="Bottom" MouseLeftButtonDown="SettingsCatalog_MouseLeftButtonDown"/>
                 <Label x:Name="SettingsMenu" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Content="Налаштування" Cursor="Hand" Padding="0, 0, 0, 2" FontFamily="Arial Black" FontSize="16" FontWeight="Normal" Foreground="#FF134563" HorizontalAlignment="Left" Width="138" Margin="82,0,0,13" Height="44" VerticalAlignment="Bottom" MouseLeftButtonDown="SettingsMenu_MouseLeftButtonDown"/>
             </Grid>
@@ -102,6 +42,8 @@
                 <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
                 <TextBox x:Name="CatalogSearch" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="25" SelectionBrush="#FF757575" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF717171" Margin="365,31,0,0" BorderBrush="#FF9E9E9E" TextChanged="CatalogSearch_TextChanged"/>
                 <Image Source="/Image/icons8-поиск-48.png" HorizontalAlignment="Right" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0,0,290,490"/>
+                <Label Content="Загальна кількість:" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="35,31,475,485" Foreground="Black" FontFamily="Segoe UI" FontSize="15" FontWeight="Normal"></Label>
+                <Label x:Name="CatalogAmount" Foreground="#FF5957BA" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="175,31,0,0"/>
 
 
                 <ScrollViewer Background="White" Margin="0,106,0,0">
@@ -112,7 +54,7 @@
 
                 <Grid Height="30" Margin="0,76,15,440">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -120,12 +62,98 @@
                     <Label x:Name="CatalogSortByName" Cursor="Hand" Grid.Column="0" Content="Назва" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
                     <Label x:Name="CatalogSortByPrice" Cursor="Hand" Grid.Column="1" Content="Ціна" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
                     <Label x:Name="CatalogSortByType" Cursor="Hand" Grid.Column="2" Content="Тип" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click"/>
-                    <Label x:Name="CatalogSortByStatus" Cursor="Hand" Grid.Column="3" Content="Статус" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <Label x:Name="CatalogSortByStatus" Grid.Column="3" Content="Статус" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                 </Grid>
             </Grid>
         </Grid>
 
-        <Grid x:Name="Settings" Margin="1100,365,-800,-251">
+        <Grid x:Name="Ticket" Margin="1820,365,-1520,-251">
+            <Border CornerRadius="25" HorizontalAlignment="Center" Height="586" VerticalAlignment="Center" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainTicket" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Width="650" Background="White"/>
+                <Button x:Name="TicketBackBtn" Cursor="Hand" Style="{DynamicResource ButtonBack}" Content="←" Margin="35,10,585,492" FontSize="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3A3C3F" Click="TicketBackBtn_Click"></Button>
+
+                <Label Content="Дані видання" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="255,30,225,472" Foreground="#FF5957BA" FontFamily="Segoe UI" FontSize="26" FontWeight="Normal"></Label>
+
+                <Label Content="Назва видання: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="130,88,0,0" Width="163"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,92,115,425" >
+                    <Label x:Name="TicketTitle"  HorizontalAlignment="Center" Content="Приклад видання" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Ціна (за місяць): " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="120,135,0,0" Width="180"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="305,139,215,378" >
+                    <Label x:Name="TicketPrice" HorizontalAlignment="Center" Content="$99.00" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Дані замовника" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="108,195,342,306" Foreground="#FF5957BA" FontFamily="Segoe UI" FontSize="26" FontWeight="Normal"/>
+
+                <Label Content="Прізвище: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="35,252,0,0" Width="120"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="158,255,302,262" >
+                    <Label x:Name="TicketSurname" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Ім'я: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="93,298,0,0" Width="60"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="158,302,302,215" >
+                    <Label x:Name="TicketFirstname" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="По батькові: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="15,343,0,0" Width="133"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="158,349,302,168" >
+                    <Label x:Name="TicketMiddlename" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Адреса: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="63,390,0,0" Width="90"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="160,396,300,121" >
+                    <Label x:Name="TicketAddress" HorizontalAlignment="Center" Content="вул. Богуна, буд. 2" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Період підписки" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="395,195,30,306" Foreground="#FF5957BA" FontFamily="Segoe UI" FontSize="26" FontWeight="Normal" RenderTransformOrigin="0.467,0.556"/>
+
+                <Label Content="Початок: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="368,249,0,0" Width="100"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="475,255,30,262" >
+                    <Label x:Name="TicketDateBegin" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Label Content="Кінець: " Foreground="#FF3A3C3F" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" MouseLeftButtonDown="CatalogSort_Click" Margin="386,296,0,0" Width="84"/>
+                <Border CornerRadius="8" Background="#FFEEF1F4" Margin="475,302,30,214" >
+                    <Label x:Name="TicketDateEnd" HorizontalAlignment="Center" Content="Іванов" Foreground="#FF9E9EA4" FontFamily="Calibri" FontSize="16"></Label>
+                </Border>
+
+                <Button x:Name="TicketDownloadBtn" Style="{DynamicResource Submit_Button}" Content="Скачати" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="243,470,243,0" Height="40" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.175" Click="TicketDownloadBtn_Click"/>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Subscribtion" Height="586" VerticalAlignment="Top" Margin="1820,-236,-1520,0">
+            <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
+            <Grid x:Name="MainSubscription" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
+                <TextBox x:Name="SubscribtionSearch" TextAlignment="Left" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle2}" TextWrapping="Wrap" Width="236" Height="25" SelectionBrush="#FF757575" FontFamily="Segoe UI" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF717171" Margin="365,31,0,0" BorderBrush="#FF9E9E9E" TextChanged="SubscribtionSearch_TextChanged"/>
+                <Image Source="/Image/icons8-поиск-48.png" HorizontalAlignment="Right" Width="25" Height="25" VerticalAlignment="Bottom" Margin="0,0,290,490"/>
+                <Label Content="Загальна кількість:" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="35,31,475,485" Foreground="Black" FontFamily="Segoe UI" FontSize="15" FontWeight="Normal"></Label>
+                <Label x:Name="SubscribtionAmount" Foreground="#FF5957BA" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="175,31,0,0"/>
+
+                <ScrollViewer Background="White" Margin="0,106,0,0">
+                    <StackPanel x:Name="SubscribtionPanel">
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Grid Height="30" Margin="0,76,15,440">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="SubscribtionSortByName" Cursor="Hand" Grid.Column="0" Content="Назва" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="SubscribtionSort"/>
+                    <Label x:Name="SubscribtionSortByStartDate" Cursor="Hand" Grid.Column="1" Content="Час формлення" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="SubscribtionSort"/>
+                    <Label x:Name="SubscribtionSortByEndDate" Cursor="Hand" Grid.Column="2" Content="Час закінчення" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" MouseLeftButtonDown="SubscribtionSort"/>
+                    <Label Grid.Column="3" Content="Чек" Foreground="Black" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Settings" Margin="2540,-236,-2240,350">
             <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
             <Grid x:Name="MainSettings" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
@@ -159,7 +187,7 @@
             </Grid>
         </Grid>
 
-        <Grid x:Name="Checkout" Margin="1820,365,-1520,-251">
+        <Grid x:Name="Checkout" Margin="1100,365,-800,-251">
             <Border CornerRadius="25" HorizontalAlignment="Left" Height="586" VerticalAlignment="Bottom" Width="700" Background="#FFD4D4D4" Opacity="0.8"/>
             <Grid x:Name="MainCheckout" Height="546" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border CornerRadius="25" HorizontalAlignment="Center" Height="546" VerticalAlignment="Center" Width="650" Background="White"/>
@@ -213,7 +241,7 @@
                     <ComboBoxItem>12</ComboBoxItem>
                 </ComboBox>
 
-                <Button x:Name="CheckoutSubmit" Style="{DynamicResource Submit_Button}" Content="Підтвердити" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="96,474,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" RenderTransformOrigin="0.5,0.175"/>
+                <Button x:Name="CheckoutSubmit" Style="{DynamicResource Submit_Button}" Content="Підтвердити" BorderBrush="#FF5957BA" Background="White" FontFamily="Arial Black" FontSize="16" Foreground="#FF5957BA" Margin="96,474,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" RenderTransformOrigin="0.5,0.175" Click="CheckoutSubmit_Click"/>
                 <Button x:Name="CheckoutBackBtn" Cursor="Hand" Style="{DynamicResource ButtonBack}" Content="←" Margin="35,10,585,492" FontSize="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF3A3C3F" Click="CheckoutBackBtn_Click"></Button>
             </Grid>
         </Grid>
